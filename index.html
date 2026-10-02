@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="script.js" defer></script>
+    <title>temple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="experience-container">
+
+        <div id="fade-overlay"></div>
+
+                <div id="top-text-bar" element-description="who am i?" clicked-dialogue="good question, man">
+                    <p id="top-text">text.........</p>
+                </div>
+
+            <div id="experience-canvas">
+
+                    <div id="dialogue-overlay">
+                        <div id="dialogue-box"> 
+                            <p id="dialogue-text"></p>
+                        </div>
+                    </div>
+
+                <div id="game-scene-1">
+
+                    <video autoplay muted loop playsinline id="scene1-video" class="scene-video">
+                        <source src="/assets/scene1.mp4" type="video/mp4">
+                        hello
+                    </video>
+
+                    <div id="grass-hitbox" element-description="grass. green and tasty :3" clicked-dialogue="it's grass. looks a little bit.. flat. must have been cut recently"></div>
+
+                    <div id="temple-hitbox" element-description="a temple. you can see the sky" clicked-dialogue="what a lovely temple! i sure hope theres nothing bad inside"></div>
+
+                    <div id="enter-temple-button" element-description="a doorway"></div>
+
+                    <div id="start-screen">
+                        <h1> AJTTMMMMDWAMOIB </h1>
+                        <button class="menu-button" id="startGameButton">begin</button>
+                        <button class="menu-button" id="fullscreenButton">fullscreen</button>
+                    </div>
+
+                </div>
+
+                <div id="game-scene-2">
+
+
+                    <video autoplay muted loop playsinline id="scene2-video" class="scene-video">
+                        <source src="/assets/scene2.mp4" type="video/mp4">
+                    </video>
+
+                    <div id="interior-temple-walls-hitbox" element-description="they shine so brightly" clicked-dialogue="you'd think whoever made this building would have a... better taste in wallpaper"></div>
+
+                    <div id="leave-temple-button"></div>
+
+                    <div id="floating-object" element-description="it's almost like they put it here for you to pick it up"></div>
+
+                    <div id="altar-hitbox" element-description="a marble altar created by a great stonemason." clicked-dialogue="the most normal thing in this room."></div>
+
+                </div>
+
+            </div>
+    </div>
+</body>
