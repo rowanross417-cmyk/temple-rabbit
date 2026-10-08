@@ -4,6 +4,7 @@ const experienceContainer = document.getElementById('experience-container');
 const fadeOverlay = document.getElementById('fade-overlay');
 const enterTempleButton = document.getElementById('enter-temple-button');
 const topText = document.getElementById('top-text');
+const topTextBar = document.getElementById('top-text-bar');
 const dialogueBox = document.getElementById('dialogue-box')
 const dialogueText = document.getElementById('dialogue-text')
 const dialogueOverlay = document.getElementById('dialogue-overlay')
@@ -13,9 +14,12 @@ const sacrificeModal = document.getElementById('sacrifice-modal')
 const sacrificeModalOverlay = document.getElementById('sacrifice-modal-overlay')
 const sacrificeModalButtonYes = document.getElementById('sacrifice-modal-button-yes')
 const sacrificeModalButtonNo = document.getElementById('sacrifice-modal-button-no')
+const enterTheMMMMDClickOverlay = document.getElementById('enter-the-mmmmd-click-overlay');
 
 const gameScene1 = document.getElementById('game-scene-1');
 const gameScene2 = document.getElementById('game-scene-2');
+const gameScene3 = document.getElementById('game-scene-3');
+const enterTheMMMMDCutscene = document.getElementById('enter-the-mmmmd-cutscene');
 
 const targetWidth = 1920;
 const targetHeight = 1080;
@@ -41,7 +45,6 @@ function startGame() {
     startScreen.style.opacity = '0';
     startScreen.style.pointerEvents = 'none';
     loadScene();
-    const topTextBar = document.getElementById('top-text-bar');
     topTextBar.style.display = 'block';
     firstBegin = true;
     changeScene('scene1');
@@ -147,6 +150,8 @@ leaveTempleButton.addEventListener('click', () => {
     changeScene('scene1');
 });
 
+let firstBegin = null;
+
 function changeScene(currentScene) {
 
     if (firstBegin !== true) {
@@ -163,6 +168,18 @@ function changeScene(currentScene) {
             activeScene = gameScene2;
         } else {
             gameScene2.style.display = 'none';
+        }
+        if (currentScene === 'scene3') {
+            gameScene3.style.display = 'block';
+        } else {
+            gameScene3.style.display = 'none';
+        }
+        if (currentScene === 'enterTheMMMMDCutscene') {
+            enterTheMMMMDCutscene.style.display = 'block';
+            topTextBar.style.display = 'none';
+        } else {
+            enterTheMMMMDCutscene.style.display = 'none';
+            topTextBar.style.display = 'block';
         }
         fadeOverlay.classList.remove('active');
         if (activeScene) {
@@ -211,7 +228,8 @@ function openSacrificeModal() {
 }
 
 sacrificeModalButtonYes.addEventListener('click', () => {
-    changeScene('scene3');
+    changeScene('enterTheMMMMDCutscene');
+    playCutscene('enterMMMMD');
 });
 
 sacrificeModalButtonNo.addEventListener('click', () => {
@@ -222,3 +240,127 @@ sacrificeModalButtonNo.addEventListener('click', () => {
     sacrificeModal.classList.remove('interactable');
     sacrificeModalOverlay.classList.remove('active');
 });
+
+const cutsceneText = document.getElementById('cutscene-text');
+const cutsceneTextInterval = 100;
+let cutsceneTextStart = 0;
+let cutsceneTextContent = '';
+
+function playCutscene(cutscene) {
+
+    if (cutscene === 'enterMMMMD') {
+
+        runCutscene('begin');
+
+    } else {
+        console.log('what is going on');
+    }
+
+}        
+
+let cutsceneTextPart = 'begin';
+
+function runCutscene(whichScene) {
+
+    if (whichScene === 'begin') {
+        typeCutsceneText('begin');
+    }
+
+}
+
+function typeCutsceneText(typingScene) {
+
+        if (typingScene === 'begin') {
+            typeCutsceneText1();      
+        } 
+
+    if (typingScene === 'mid') {
+        cutsceneText.innerHTML += '<br>';
+            typeCutsceneText2();
+    }
+    if (typingScene === 'end') {
+        cutsceneText.innerHTML += '<br>';
+            typeCutsceneText3();
+    }
+}
+function changeToNextCutsceneText() {
+
+    if (cutsceneTextPart === 'begin') {
+        isTypingCutsceneText1 = false;
+        isTypingCutsceneText2 = true;
+        cutsceneTextPart = 'mid';
+        cutsceneTextStart = 0;
+        typeCutsceneText('mid');
+
+    } else if (cutsceneTextPart === 'mid') {
+        isTypingCutsceneText2 = false;
+        isTypingCutsceneText3 = true;
+        cutsceneTextPart = 'end';
+        cutsceneTextStart = 0;
+        typeCutsceneText('end');
+    }
+    else if (cutsceneTextPart === 'end') {
+        isTypingCutsceneText3 = false;
+        cutsceneTextPart = '';
+        cutsceneTextStart = 0;
+
+    }
+}
+
+let isTypingCutsceneText1 = true;
+let isTypingCutsceneText2 = false;
+let isTypingCutsceneText3 = false;
+
+function typeCutsceneText1() {
+    cutsceneTextContent = 'you pick up the knife...';
+
+    if (isTypingCutsceneText1 === true && cutsceneTextStart < cutsceneTextContent.length) {
+        cutsceneText.innerHTML += cutsceneTextContent.charAt(cutsceneTextStart);
+        cutsceneTextStart++;
+        console.log('texttyped');
+
+        setTimeout(typeCutsceneText1, cutsceneTextInterval);
+    } else if (cutsceneTextStart === cutsceneTextContent.length) {
+        console.log('die');
+        cutsceneTextContent = '';
+        changeToNextCutsceneText();
+    }
+}
+
+function typeCutsceneText2() {
+    cutsceneTextContent = '... nevermind,';
+
+    if (isTypingCutsceneText2 === true && cutsceneTextStart < cutsceneTextContent.length) {
+        cutsceneText.innerHTML += cutsceneTextContent.charAt(cutsceneTextStart);
+        cutsceneTextStart++;
+        console.log('texttyped');
+
+        setTimeout(typeCutsceneText2, cutsceneTextInterval);
+    } else if (cutsceneTextStart === cutsceneTextContent.length) {
+        cutsceneTextContent = '';
+        changeToNextCutsceneText();
+    }
+}
+
+function typeCutsceneText3() {
+    cutsceneTextContent = 'you go INSIDE the knife';
+
+    if (isTypingCutsceneText3 === true && cutsceneTextStart < cutsceneTextContent.length) {
+        cutsceneText.innerHTML += cutsceneTextContent.charAt(cutsceneTextStart);
+        cutsceneTextStart++;
+        console.log('texttyped');
+
+        setTimeout(typeCutsceneText3, cutsceneTextInterval);
+    } else if (cutsceneTextStart === cutsceneTextContent.length) {
+        cutsceneTextContent = '';
+        enterTheMMMMDClickOverlay.style.display = 'block';
+        enterTheMMMMDClickOverlay.addEventListener('click', () => {
+        changeScene('scene3');
+        });
+        changeToNextCutsceneText();
+    }
+}
+function magicTextFunction() {
+    console.log('it worked!')
+    cutsceneText.style.color = 'red';
+}

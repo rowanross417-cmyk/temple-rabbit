@@ -100,19 +100,25 @@ button.menu-button {
     font-family: "papyrus", fantasy;
     width: 220px;
     height: 60px;
-    background-color:rgb(255, 0, 0);
+    background-color:rgba(255, 0, 0, 0.505);
     border-style: solid;
     border-width: 2px;
+    border-color: red;
     font-size: 2rem;
     font-weight: bold;
     transition: 0.5s;
 }
 
+button.menu-button:hover {
+    background-color: rgb(255, 0, 0);
+    border-color: black;
+}
+
 #enter-temple-button {
     position: fixed;
-    left: 876px;
-    bottom: 570px;
-    width: 7.8%;
+    left: 866px;
+    bottom: 594px;
+    width: 9.2%;
     height: 95px;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: inset 0 0 20px 1px rgb(0, 101, 137);
@@ -151,6 +157,20 @@ button.menu-button {
     width: 100%;
     height: 100%;
     clip-path: polygon(15.29% 3.96%, 74.51% 3.96%, 74.93% 11.55%, 81.11% 11.55%, 81.11% 15.64%, 75.16% 15.64%, 75.35% 19.15%, 68.23% 20.4%, 67.97% 15.64%, 15.29% 15.64%);
+}
+
+#angry-emoji-hitbox {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(81.55% 8.17%, 85.76% 3.19%, 90.6% 6.19%, 89.97% 15.35%, 85.9% 19.21%, 82.1% 14.6%);
+}
+
+#clock-emoji-hitbox {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(90.95% 7.67%, 95.16% 2.69%, 100% 5.69%, 99.37% 14.85%, 95.34% 17.86%, 91.5% 14.11%);
 }
 
 #grass-hitbox {
@@ -351,5 +371,32 @@ button.menu-button {
 }
 
 #game-scene-2 {
+    display: none;
+}
+
+#enter-the-mmmmd-cutscene {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3.5rem;
+    margin-left: 4%;
+}
+
+#enter-the-mmmmd-click-overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    opacity: 20%;
+    background-color: rgba(123, 255, 0, 0.307);
+}
+
+#cutscene-text {
+    transition: color 1.6s ease-out;
+}
+
+#game-scene-3 {
     display: none;
 }
