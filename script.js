@@ -107,6 +107,36 @@ document.querySelectorAll('[clicked-dialogue]').forEach(element => {
     });
 });
 
+var grassClickedHowManyTimes = 0;
+
+const grassHitbox = document.getElementById("grass-hitbox");
+let clickedGrassDialogue = grassHitbox.getAttribute("clicked-dialogue");
+
+function checkHowManyTimesGrassHasBeenClickedAndSeeIfSomethingNeedsToBeDone() {
+    if (grassClickedHowManyTimes === 1) {
+        grassHitbox.setAttribute("clicked-dialogue", "this must be the one element you can click twice or something");
+    }
+    if (grassClickedHowManyTimes === 2) {
+        grassHitbox.setAttribute("clicked-dialogue", "its not going to do anything...dont click the grass again...");
+    }
+    if (grassClickedHowManyTimes === 3) {
+        grassHitbox.setAttribute("clicked-dialogue", "what did i just tell you........... grrrrrrrrr...!!!!!!!!!!");
+    }
+    if (grassClickedHowManyTimes === 4) {
+        grassHitbox.setAttribute("clicked-dialogue", "*opens grass eating gui if it existed*");
+        
+    }
+}
+
+grassHitbox.addEventListener('click', function() {
+        grassClickedHowManyTimes++;
+        console.log("grass clicked... " + grassClickedHowManyTimes + "times");
+        checkHowManyTimesGrassHasBeenClickedAndSeeIfSomethingNeedsToBeDone();
+        console.log(clickedGrassDialogue);
+})
+
+
+
 function startDialogue(text) {
     
     clearInterval(typeInterval);
