@@ -1,0 +1,82 @@
+@font-face {
+    font-family: "papyrus";
+    src: url("fonts/papyrus.ttf");
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+#wrapper {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    font-family: "papyrus", fantasy;
+    font-size: 3rem;
+    background-color: black;
+    color: white;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    margin-left: 50px;
+    line-height: 2.5rem;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 0px;
+}
+
+a {
+    background-color: red;
+    color: white;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    transition: 0.1s;
+}
+
+#other-button {
+    font-size:2rem;
+    background-color: slateblue;
+    color: white;
+}
+#other-button:hover {
+    background-color: slategray;
+}
+
+a:hover {
+    background-color: green;
+    color: black;
+}
+
+#footer {
+    background-color: slateblue;
+    margin-top: auto;
+    padding: 10px;
+}
+
+#friends-page-div {
+    align-items: center;
+    text-align: left;
+    gap: 20px;
+    align-content: start;
+}
+
+a.friend-buttons {
+    text-align: left;
+    margin-left: 20px;
+    width: fit-content;
+    background-color: slateblue;
+}
